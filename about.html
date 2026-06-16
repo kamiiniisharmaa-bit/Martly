@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martly · About Us</title>
+  <!-- Font Awesome 6 (free) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #faf8f6;
+      color: #1e1e1e;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- header / nav (consistent) ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .logo i {
+      color: #2a7de1;
+      font-size: 30px;
+    }
+    .logo .mart {
+      color: #2a7de1;
+    }
+    .logo span {
+      color: #1e1e1e;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+      color: #2c2c2c;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #2a7de1;
+    }
+    .nav-links a.active {
+      color: #2a7de1;
+      border-bottom: 2px solid #2a7de1;
+      padding-bottom: 4px;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+      color: #1e1e1e;
+    }
+    .nav-icons i {
+      cursor: default;
+      transition: 0.2s;
+    }
+    .nav-icons i:hover {
+      color: #2a7de1;
+    }
+
+    /* ----- about hero ----- */
+    .about-hero {
+      margin: 40px 0 32px;
+    }
+    .about-hero h1 {
+      font-size: 40px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+    .about-hero h1 i {
+      color: #2a7de1;
+      font-size: 36px;
+    }
+    .about-hero p {
+      color: #4a4a4a;
+      font-size: 18px;
+      margin-top: 10px;
+      max-width: 700px;
+      line-height: 1.5;
+    }
+
+    /* ----- about card (main content) ----- */
+    .about-card {
+      background: white;
+      border-radius: 36px;
+      padding: 40px 44px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+      border: 1px solid #ede9e4;
+      margin-bottom: 50px;
+    }
+
+    .about-card h2 {
+      font-size: 26px;
+      font-weight: 600;
+      margin: 32px 0 14px 0;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .about-card h2:first-of-type {
+      margin-top: 0;
+    }
+    .about-card h2 i {
+      color: #2a7de1;
+      font-size: 22px;
+      width: 30px;
+      text-align: center;
+    }
+
+    .about-card p {
+      font-size: 16px;
+      line-height: 1.7;
+      color: #2e2e2e;
+      margin-bottom: 18px;
+    }
+
+    .about-card ul {
+      margin: 10px 0 22px 28px;
+      list-style: none;
+    }
+    .about-card ul li {
+      margin-bottom: 10px;
+      font-size: 16px;
+      line-height: 1.6;
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    .about-card ul li i {
+      color: #2a7de1;
+      font-size: 18px;
+      margin-top: 3px;
+      width: 22px;
+      text-align: center;
+    }
+
+    .highlight-box {
+      background: #f2f6fc;
+      border-radius: 20px;
+      padding: 22px 28px;
+      margin: 28px 0 8px;
+      border-left: 6px solid #2a7de1;
+    }
+    .highlight-box p {
+      margin-bottom: 0;
+      font-weight: 450;
+    }
+    .highlight-box i {
+      color: #2a7de1;
+      margin-right: 8px;
+    }
+
+    /* ----- team grid (with images) ----- */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 28px;
+      margin: 16px 0 12px;
+    }
+    .team-card {
+      text-align: center;
+      background: #faf8f6;
+      border-radius: 28px;
+      padding: 20px 12px 18px;
+      border: 1px solid #f0ece8;
+      transition: 0.2s;
+    }
+    .team-card:hover {
+      border-color: #cbd6e6;
+      transform: translateY(-4px);
+      box-shadow: 0 8px 18px rgba(0,0,0,0.02);
+    }
+    .team-card img {
+      width: 100%;
+      max-width: 130px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 60px;
+      background: #eef2f7;
+      margin-bottom: 12px;
+      transition: 0.2s;
+    }
+    .team-card img:hover {
+      transform: scale(1.02);
+    }
+    .team-card h4 {
+      font-weight: 600;
+      font-size: 17px;
+      margin-top: 4px;
+    }
+    .team-card p {
+      font-size: 14px;
+      color: #5e5e5e;
+      margin-top: 2px;
+    }
+
+    .last-updated {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid #e4dfda;
+      font-size: 14px;
+      color: #6b6b6b;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+    .last-updated i {
+      color: #2a7de1;
+    }
+
+    /* footer */
+    .footer {
+      margin-top: 20px;
+      padding: 32px 0 24px;
+      border-top: 1px solid #e4dfda;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: #3c3c3c;
+      font-size: 14px;
+    }
+    .footer i {
+      color: #2a7de1;
+      margin: 0 6px;
+    }
+
+    @media (max-width: 640px) {
+      .navbar { flex-direction: column; gap: 16px; }
+      .nav-links { gap: 18px; flex-wrap: wrap; justify-content: center; }
+      .about-card { padding: 28px 20px; }
+      .about-hero h1 { font-size: 30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+
+    <!-- header with menu (active "About") -->
+    <header class="navbar">
+      <div class="logo">
+        <i class="fas fa-store-alt"></i>
+        <span class="mart">Mart</span><span>ly</span>
+      </div>
+      <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+      </div>
+      <div class="nav-icons">
+        <i class="fas fa-search"></i>
+        <i class="fas fa-heart"></i>
+        <i class="fas fa-shopping-bag"></i>
+      </div>
+    </header>
+
+    <!-- about page content -->
+    <div class="about-hero">
+      <h1><i class="fas fa-people-group"></i> About Martly</h1>
+      <p>We’re on a mission to make style accessible, joyful, and effortless — for everyone.</p>
+    </div>
+
+    <div class="about-card">
+
+      <h2><i class="fas fa-flag"></i> Our Story</h2>
+      <p>Martly was born in 2022 from a simple idea: shopping should feel like discovery, not a chore. What started as a small pop‑up in Brooklyn has grown into a global platform connecting independent designers, curated brands, and conscious consumers. We believe that great style doesn’t have to cost the earth — or your peace of mind.</p>
+
+      <h2><i class="fas fa-heart"></i> What We Stand For</h2>
+      <ul>
+        <li><i class="fas fa-chevron-right"></i> <strong>Curated with care:</strong> Every piece is chosen for quality, durability, and timeless appeal.</li>
+        <li><i class="fas fa-chevron-right"></i> <strong>Inclusive & diverse:</strong> We celebrate all bodies, identities, and expressions.</li>
+        <li><i class="fas fa-chevron-right"></i> <strong>Transparent & fair:</strong> We work with ethical suppliers and share our impact openly.</li>
+      </ul>
+
+      <div class="highlight-box">
+        <p><i class="fas fa-leaf"></i> <strong>Our commitment:</strong> By 2027, we aim to make 80% of our products from sustainable or recycled materials. We’re also carbon‑neutral on all deliveries.</p>
+      </div>
+
+      <h2><i class="fas fa-star"></i> Why Martly?</h2>
+      <ul>
+        <li><i class="fas fa-chevron-right"></i> <strong>Style meets substance:</strong> Fashion that looks good and feels good.</li>
+        <li><i class="fas fa-chevron-right"></i> <strong>Community first:</strong> We listen to our customers and co‑create collections with them.</li>
+        <li><i class="fas fa-chevron-right"></i> <strong>Hassle‑free:</strong> Easy returns, fast shipping, and a support team that actually cares.</li>
+      </ul>
+
+      <!-- team section with images -->
+      <h2 style="margin-top: 40px;"><i class="fas fa-user-group"></i> Meet the Team</h2>
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&h=200&fit=crop&crop=center&auto=format" alt="Maya Chen" loading="lazy" />
+          <h4>Maya Chen</h4>
+          <p>Co‑founder &amp; Creative</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=200&h=200&fit=crop&crop=center&auto=format" alt="James Okafor" loading="lazy" />
+          <h4>James Okafor</h4>
+          <p>Co‑founder &amp; Operations</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=200&h=200&fit=crop&crop=center&auto=format" alt="Lea Moreau" loading="lazy" />
+          <h4>Lea Moreau</h4>
+          <p>Head of Design</p>
+        </div>
+        <div class="team-card">
+          <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=200&h=200&fit=crop&crop=center&auto=format" alt="David Kim" loading="lazy" />
+          <h4>David Kim</h4>
+          <p>Community &amp; Sustainability</p>
+        </div>
+      </div>
+
+      <!-- last updated / contact -->
+      <div class="last-updated">
+        <span><i class="far fa-calendar"></i> Founded 2022 · NYC</span>
+        <span><i class="far fa-envelope"></i> hello@martly.com</span>
+      </div>
+    </div>
+
+    <!-- footer (consistent) -->
+    <div class="footer">
+      <div>© 2026 <strong>Martly</strong> · style for life</div>
+      <div>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-youtube"></i>
+        <i class="fab fa-tiktok"></i>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

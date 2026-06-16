@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Martly · ecom home</title>
+  <!-- Font Awesome (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    body {
+      background: #faf8f6;
+      color: #1e1e1e;
+    }
+
+    /* container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    /* ----- header / nav ----- */
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid rgba(0,0,0,0.04);
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .logo i {
+      color: #2a7de1;
+      font-size: 30px;
+    }
+    .logo span {
+      color: #1e1e1e;
+    }
+    .logo .mart {
+      color: #2a7de1;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      font-weight: 500;
+      color: #2c2c2c;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 16px;
+      transition: 0.2s;
+    }
+    .nav-links a:hover {
+      color: #2a7de1;
+    }
+
+    .nav-icons {
+      display: flex;
+      gap: 20px;
+      font-size: 20px;
+      color: #1e1e1e;
+    }
+    .nav-icons i {
+      cursor: default;
+      transition: 0.2s;
+    }
+    .nav-icons i:hover {
+      color: #2a7de1;
+    }
+
+    /* ----- hero (with image) ----- */
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      margin: 40px 0 56px 0;
+      gap: 30px;
+    }
+
+    .hero-text {
+      flex: 1 1 300px;
+    }
+    .hero-text h1 {
+      font-size: 44px;
+      font-weight: 700;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    .hero-text h1 i {
+      color: #2a7de1;
+    }
+    .hero-text p {
+      margin: 18px 0 28px;
+      font-size: 18px;
+      color: #4a4a4a;
+      max-width: 440px;
+      line-height: 1.5;
+    }
+    .btn {
+      background: #1e1e1e;
+      color: white;
+      border: none;
+      padding: 14px 36px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: default;
+      transition: 0.2s;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+    }
+    .btn i {
+      font-size: 18px;
+    }
+    .btn:hover {
+      background: #2a7de1;
+      transform: scale(1.01);
+    }
+
+    .hero-image {
+      flex: 1 1 300px;
+      background: #d9e2ef;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 240px;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+      transition: 0.3s;
+    }
+    .hero-image img:hover {
+      transform: scale(1.01);
+    }
+
+    /* ----- categories (with images) ----- */
+    .section-title {
+      font-size: 28px;
+      font-weight: 600;
+      margin: 48px 0 24px 0;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-title i {
+      color: #2a7de1;
+      font-size: 26px;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 24px;
+      margin-bottom: 20px;
+    }
+
+    .category-card {
+      background: white;
+      border-radius: 28px;
+      padding: 20px 12px 16px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      transition: 0.25s ease;
+      border: 1px solid #f0ece8;
+    }
+    .category-card:hover {
+      transform: translateY(-6px);
+      border-color: #d0dae8;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.04);
+    }
+    .category-card img {
+      width: 100%;
+      max-width: 100px;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 60px;
+      background: #f0f4fa;
+      margin-bottom: 12px;
+      transition: 0.2s;
+    }
+    .category-card img:hover {
+      transform: scale(1.02);
+    }
+    .category-card h4 {
+      font-weight: 600;
+      font-size: 16px;
+      margin-top: 4px;
+      color: #1e1e1e;
+    }
+    .category-card p {
+      font-size: 13px;
+      color: #6b6b6b;
+      margin-top: 4px;
+    }
+
+    /* ----- featured products (with images) ----- */
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 28px;
+      margin: 16px 0 40px;
+    }
+
+    .product-card {
+      background: white;
+      border-radius: 28px;
+      padding: 18px 14px 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+      border: 1px solid #f0ece8;
+      transition: 0.2s;
+      text-align: center;
+    }
+    .product-card:hover {
+      border-color: #cbd6e6;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.04);
+      transform: translateY(-4px);
+    }
+    .product-card img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 24px;
+      background: #f2f6fc;
+      transition: 0.2s;
+    }
+    .product-card img:hover {
+      transform: scale(1.01);
+    }
+    .product-card h4 {
+      margin: 14px 0 4px;
+      font-weight: 600;
+    }
+    .product-card .price {
+      font-weight: 600;
+      color: #1e1e1e;
+      font-size: 18px;
+      margin: 6px 0 8px;
+    }
+    .product-card .price small {
+      font-weight: 400;
+      color: #6b6b6b;
+      font-size: 14px;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+    .rating {
+      color: #f5b342;
+      letter-spacing: 2px;
+      font-size: 14px;
+    }
+    .rating span {
+      color: #9b9b9b;
+      margin-left: 6px;
+      font-size: 13px;
+    }
+
+    /* ----- banner / extra image ----- */
+    .banner-block {
+      background: #1e1e1e;
+      border-radius: 40px;
+      padding: 24px 32px;
+      margin: 48px 0 32px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      color: white;
+    }
+    .banner-block h3 {
+      font-size: 26px;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .banner-block h3 i {
+      color: #ffd966;
+    }
+    .banner-block .banner-btn {
+      background: white;
+      color: #1e1e1e;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      cursor: default;
+      transition: 0.2s;
+    }
+    .banner-block .banner-btn i {
+      color: #2a7de1;
+    }
+    .banner-block .banner-btn:hover {
+      background: #f0f4fa;
+      transform: scale(1.01);
+    }
+    .banner-image {
+      flex: 0 0 120px;
+      height: 80px;
+      border-radius: 60px;
+      overflow: hidden;
+      background: #3a4a5e;
+    }
+    .banner-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* footer */
+    .footer {
+      margin-top: 50px;
+      padding: 32px 0 24px;
+      border-top: 1px solid #e4dfda;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      color: #3c3c3c;
+      font-size: 14px;
+    }
+    .footer i {
+      color: #2a7de1;
+      margin: 0 6px;
+    }
+
+    /* small tweaks */
+    @media (max-width: 600px) {
+      .hero-text h1 { font-size: 32px; }
+      .navbar { flex-direction: column; gap: 16px; }
+      .nav-links { gap: 18px; flex-wrap: wrap; justify-content: center; }
+    }
+  </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NTV0NLN2X5"></script>
+<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+
+gtag('config', 'G-NTV0NLN2X5');
+</script>
+</head>
+<body>
+  <div class="container">
+
+    <!-- header -->
+    <header class="navbar">
+      <div class="logo">
+        <i class="fas fa-store-alt"></i>
+        <span class="mart">Mart</span><span>ly</span>
+      </div>
+      <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+      <a href="about.html">About Us</a>
+      </div>
+      <div class="nav-icons">
+        <i class="fas fa-search"></i>
+        <i class="fas fa-heart"></i>
+        <i class="fas fa-shopping-bag"></i>
+      </div>
+    </header>
+
+    <!-- hero with image -->
+    <section class="hero">
+      <div class="hero-text">
+        <h1>Discover <i>style</i> <br />for every moment</h1>
+        <p>Curated essentials, fresh drops &amp; timeless pieces — all at Martly.</p>
+        <div class="btn">
+          <i class="fas fa-arrow-right"></i> Explore collection
+        </div>
+      </div>
+      <div class="hero-image">
+        <!-- hero image: diverse lifestyle / fashion -->
+        <img src="https://images.unsplash.com/photo-1555529669-e69e7aa0ba9a?w=600&h=400&fit=crop&crop=center&auto=format" 
+             alt="Martly hero: fashion and lifestyle" 
+             loading="lazy" />
+      </div>
+    </section>
+
+    <!-- categories with images -->
+    <div class="section-title">
+      <i class="fas fa-th-large"></i> Shop by category
+    </div>
+    <div class="category-grid">
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=200&h=200&fit=crop&crop=center&auto=format" alt="Men's fashion" loading="lazy" />
+        <h4>Men</h4>
+        <p>Shirts, sneakers</p>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1523381210434-271e8be1f52b?w=200&h=200&fit=crop&crop=center&auto=format&flip=true" alt="Women fashion" loading="lazy" />
+        <h4>Women</h4>
+        <p>Dresses, bags</p>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1603251578711-3290ca3a3b4c?w=200&h=200&fit=crop&crop=center&auto=format" alt="Accessories" loading="lazy" />
+        <h4>Accessories</h4>
+        <p>Watches, jewels</p>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1543163521-1bf539c55dd2?w=200&h=200&fit=crop&crop=center&auto=format" alt="Shoes" loading="lazy" />
+        <h4>Footwear</h4>
+        <p>Sneakers, boots</p>
+      </div>
+      <div class="category-card">
+        <img src="https://images.unsplash.com/photo-1519642918688-7e34b9a5ffaa?w=200&h=200&fit=crop&crop=center&auto=format" alt="Home & living" loading="lazy" />
+        <h4>Home</h4>
+        <p>Decor, kitchen</p>
+      </div>
+    </div>
+
+    <!-- featured products (with images) -->
+    <div class="section-title">
+      <i class="fas fa-star" style="color: #f5b342;"></i> Featured picks
+    </div>
+    <div class="product-grid">
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1560343090-f0409e92791a?w=400&h=400&fit=crop&crop=center&auto=format" alt="Classic white sneaker" loading="lazy" />
+        <h4>Air Court</h4>
+        <div class="price">$89 <small>$120</small></div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(112)</span></div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=400&h=400&fit=crop&crop=center&auto=format" alt="Leather tote bag" loading="lazy" />
+        <h4>Vegan tote</h4>
+        <div class="price">$64 <small>$85</small></div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><span>(84)</span></div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=400&h=400&fit=crop&crop=center&auto=format" alt="Red sneaker" loading="lazy" />
+        <h4>Red Rush</h4>
+        <div class="price">$74 <small>$99</small></div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i><span>(67)</span></div>
+      </div>
+      <div class="product-card">
+        <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=400&h=400&fit=crop&crop=center&auto=format" alt="Minimalist watch" loading="lazy" />
+        <h4>Nordic watch</h4>
+        <div class="price">$129 <small>$160</small></div>
+        <div class="rating"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i><span>(43)</span></div>
+      </div>
+    </div>
+
+    <!-- banner block with extra image -->
+    <div class="banner-block">
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <div class="banner-image">
+          <img src="https://images.unsplash.com/photo-1516905041604-7895e5da7c6c?w=200&h=120&fit=crop&crop=center&auto=format" alt="summer collection" loading="lazy" />
+        </div>
+        <h3><i class="fas fa-sun"></i> Summer drop</h3>
+      </div>
+      <div class="banner-btn">
+        <i class="fas fa-arrow-right"></i> Shop now
+      </div>
+    </div>
+
+    <!-- footer -->
+    <div class="footer">
+      <div>© 2026 <strong>Martly</strong> · style for life</div>
+      <div>
+        <i class="fab fa-instagram"></i>
+        <i class="fab fa-twitter"></i>
+        <i class="fab fa-youtube"></i>
+        <i class="fab fa-tiktok"></i>
+      </div>
+    </div>
+
+  </div> <!-- container -->
+</body>
+</html>
